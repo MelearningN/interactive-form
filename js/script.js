@@ -228,10 +228,8 @@ function checkAllValues(e) {
     const paymentValidation = paymentOption.value == 'credit card' ? (creditCardValidation && zipcodeValidation && cvvValidation) : true
 
     if (userInputValidation && emailInputValidation && paymentValidation && cost > 0) {
-        console.log('yes')
         form.submit();
     } else {
-        console.log('no')
         e.preventDefault()
         if (! userInputValidation) {
             showFillupError('name')
