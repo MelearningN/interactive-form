@@ -18,6 +18,7 @@ const creditCard = document.getElementById('credit-card');
 const paypal = document.getElementById('paypal');
 const form = document.querySelector('form');
 const bitcoin = document.getElementById('bitcoin');
+const fetchInputJobRole = document.getElementById('other-input-job')
 
 let cost = 0
 let costArray = [];
@@ -28,6 +29,7 @@ paypal.setAttribute('hidden', true);
 bitcoin.setAttribute('hidden', true);
 tShirtDesign[0].setAttribute('hidden', true);
 tshirtColors.setAttribute('hidden', true);
+fetchInputJobRole.setAttribute('hidden', true)
 
 
 // regex checker functions
@@ -101,7 +103,7 @@ function createListener(validator, property) {
 }
 
 function selectJobRole(e) {
-    const fetchInputJobRole = document.getElementById('other-input-job')
+
     if (e.target.value === 'other') {
         fetchInputJobRole.removeAttribute('hidden');
     } else {
@@ -223,10 +225,13 @@ function checkAllValues(e) {
     let creditCardValidation = creditcardValue !== '' && isValidCreditCard(creditcardValue)
     let zipcodeValidation = zipcodeValue !== '' && isValidZipcode(zipcodeValue)
     let cvvValidation = cvvValue !== '' && isValidCvv(cvvValue)
+    const paymentValidation = paymentOption.value == 'credit card' ? (creditCardValidation && zipcodeValidation && cvvValidation) : true
 
-    if (userInputValidation && emailInputValidation && creditCardValidation && zipcodeValidation && cvvValidation && cost > 0) {
+    if (userInputValidation && emailInputValidation && paymentValidation && cost > 0) {
+        console.log('yes')
         form.submit();
     } else {
+        console.log('no')
         e.preventDefault()
         if (! userInputValidation) {
             showFillupError('name')
@@ -237,7 +242,6 @@ function checkAllValues(e) {
         if (cost <= 0) {
             showWorkshopError()
         }
-        console.log('actual', tShirtDesign.value)
         if (!(tShirtDesign.value == 'js puns' || tShirtDesign.value == 'heart js')) {
             showSelectShirtError()
         }
