@@ -126,7 +126,7 @@ select,
 option {
 	font-family: 'roboto', sans-serif;
 }
-#error-text-username, #error-text-email, #error-text-card, #error-text-zip, #error-text-cvv {
+#error-text-name, #error-text-mail, #error-text-cc-num, #error-text-zip, #error-text-cvv {
     color: #d00;
 }
 
