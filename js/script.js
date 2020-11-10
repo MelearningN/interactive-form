@@ -34,7 +34,7 @@ fetchInputJobRole.setAttribute('hidden', true)
 
 // regex checker functions
 function isValidUsername(username) {
-    return /^[a-z]+$/.test(username)
+    return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(username)
 }
 
 function isValidEmail(email) {
@@ -138,7 +138,7 @@ function tShirtDesignListener() {
         colorOptions[0].value = 'tomato'
         colorOptions[1].textContent = 'Steel Blue (I &#9829; JS shirt only)'
         colorOptions[1].value = 'steelblue'
-        colorOptions[2].textContent = 'Gold (JS Puns shirt only)'
+        colorOptions[2].textContent = 'Dim Grey (I &#9829; JS shirt only)'
         colorOptions[2].value = 'dimgrey'
     }
     for (let i = 0; i < 3; i++) {
